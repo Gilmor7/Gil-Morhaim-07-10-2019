@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+// import styled from 'styled-components';
 
 // Pages imports
 import WeatherPage from './pages/WeatherPage';
@@ -20,3 +21,6 @@ function App() {
 }
 
 export default App;
+
+
+

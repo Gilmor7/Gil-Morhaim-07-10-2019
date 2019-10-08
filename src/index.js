@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import 'bootstrap/dist/css/bootstrap.min.css';
-import './index.css';
 import App from './App';
+
+import GlobalStyles from './styles/GlobalStyles';
 
 import { store } from './redux/store';
 import { Provider } from 'react-redux';
 
 ReactDOM.render(
     <Provider store={store}>
+        <GlobalStyles />
         <App />
     </Provider>, document.getElementById('root'));
 
