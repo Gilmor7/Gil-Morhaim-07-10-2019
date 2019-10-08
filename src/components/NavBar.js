@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+import { lightTheme as theme} from '../styles/colors';
+
 
 const NavBar = () => {
 
@@ -27,7 +29,7 @@ left:0;
 right:0;
 padding: 1.5rem 1.2rem;
 background-color:transparent;
-color: rgba(255, 255, 255, 0.5);
+color: ${theme.textColor};
 z-index:1;
 
 display:flex;

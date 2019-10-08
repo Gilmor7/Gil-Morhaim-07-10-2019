@@ -1,39 +1,50 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const SearchComponent = () => {
+//Styles imports
+import { lightTheme as theme } from '../styles/colors';
 
-    const on_submit = e => {
-        e.preventDefault();
+//Util functions and services
+import { getCitiesOptions } from '../services/autoComplete';
 
+
+const SearchComponent = ({ setOptions }) => {
+
+    const onChangeHandle = async (e, setOptions) => {
+        const val = e.target.value;
+
+        if (val.length === 0) setOptions(null);
+        else if (val.length % 4 === 0) {
+            const options = await getCitiesOptions(val);
+            setOptions(options);
+        }
 
     }
 
     return (
-        <SearchForm onSubmit={on_submit}>
-            <Search>
-                <Input type='text' autoComplete='off' name='search' placeholder='Show me weather in...' />
-                <Icon onClick={on_submit}><i className="fas fa-search" /></Icon>
-            </Search>
-        </SearchForm>
+        <Search>
+            <Input
+                onChange={e => onChangeHandle(e, setOptions)}
+                type='text'
+                autoComplete='off'
+                name='search'
+                placeholder='Show me weather in...' />
+            <Icon><i className="fas fa-search" /></Icon>
+        </Search>
     )
 }
 
 export default SearchComponent;
 
-const SearchForm = styled.form`
-position: relative;
-`;
-
 const Search = styled.div`
 display:flex;
-background-color: rgba(255,255,255, 0.4);
+background-color: ${theme.backColor};
 box-shadow: 0 5px 8px rgba(0,0,0, 0.2);
 `;
 
 const Icon = styled.div`
 font-size:1.8rem;
-color: rgba(0,0,0,0.4);
+color: ${theme.lightBlack};
 padding:0 1.2rem;
 display:flex;
 align-items:center;
@@ -53,7 +64,7 @@ font-size: 1.8rem;
 }
 
 &:focus ~ ${Icon} {
- color: rgba(0,0,0,0.7);
+ color: ${theme.darkerBlack};
 }
 `;
 

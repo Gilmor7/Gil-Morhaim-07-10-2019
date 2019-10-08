@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import SearchComponent from '../components/SearchComponent';
+import SearchForm from '../components/SearchForm';
 
 const WeatherPage = () => {
     return (
         <Container>
             <Overlay>
-                <SearchComponent />
+                <SearchForm />
 
             </Overlay>
         </Container>
