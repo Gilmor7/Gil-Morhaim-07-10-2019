@@ -24,10 +24,10 @@ export default NavBar;
 
 const Navigation = styled.nav`
 position:fixed;
-top:0;
+top:3rem;
 left:0;
 right:0;
-padding: 1.5rem 1.2rem;
+padding: 1.5rem 3.5rem;
 background-color:transparent;
 color: ${theme.textColor};
 z-index:1;

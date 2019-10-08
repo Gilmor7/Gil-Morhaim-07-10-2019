@@ -25,4 +25,5 @@ export default SearchForm;
 
 const Form = styled.form`
 position:relative;
+margin-bottom: 5rem;
 `;

@@ -38,14 +38,15 @@ export default SearchComponent;
 
 const Search = styled.div`
 display:flex;
-background-color: ${theme.backColor};
-box-shadow: 0 5px 8px rgba(0,0,0, 0.2);
+background-color: transparent;
+padding: 0 .5rem;
+border-bottom: 2px solid ${theme.lightBlack};
 `;
 
 const Icon = styled.div`
 font-size:1.8rem;
 color: ${theme.lightBlack};
-padding:0 1.2rem;
+padding:1rem;
 display:flex;
 align-items:center;
 cursor:pointer;
@@ -54,7 +55,6 @@ cursor:pointer;
 const Input = styled.input`
 border:none;
 background-color:transparent;
-padding: 1.5rem .5rem 1.5rem 1rem;
 width:25rem;
 color: white;
 font-size: 1.8rem;

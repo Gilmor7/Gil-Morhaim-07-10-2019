@@ -1,14 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { lightTheme as theme } from '../styles/colors';
+
 import SearchForm from '../components/SearchForm';
+import WeatherDisplay from '../components/WeatherDisplay';
 
 const WeatherPage = () => {
     return (
         <Container>
             <Overlay>
-                <SearchForm />
-
+                <PageWrapper>
+                    <SearchForm />
+                    <WeatherDisplay />
+                </PageWrapper>
             </Overlay>
         </Container>
     )
@@ -33,6 +38,13 @@ height: 100%;
 background-color: rgba(0,0,0, .4);
 display:flex;
 flex-direction:column;
-justify-content:center;
+justify-content:space-around;
 align-items:center;
+`;
+
+const PageWrapper = styled.div`
+color: ${theme.textColor};
+background-color: ${theme.backColor};
+min-height:30rem;
+padding: 2rem;
 `;
