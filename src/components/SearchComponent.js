@@ -38,6 +38,7 @@ export default SearchComponent;
 
 const Search = styled.div`
 display:flex;
+width:25rem;
 background-color: transparent;
 padding: 0 .5rem;
 border-bottom: 2px solid ${theme.lightBlack};
@@ -55,9 +56,16 @@ cursor:pointer;
 const Input = styled.input`
 border:none;
 background-color:transparent;
-width:25rem;
 color: white;
 font-size: 1.8rem;
+
+&::placeholder{
+    color: ${theme.lightBlack};
+}
+
+&:focus::placeholder{
+    color: ${theme.darkerBlack};
+}
 
 &:focus {
     outline:none;

@@ -46,5 +46,9 @@ const PageWrapper = styled.div`
 color: ${theme.textColor};
 background-color: ${theme.backColor};
 min-height:30rem;
-padding: 2rem;
+width: 90vw;
+max-width: 85rem;
+display:flex;
+flex-direction: column;
+align-items:center;
 `;
