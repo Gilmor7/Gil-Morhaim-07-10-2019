@@ -30,7 +30,7 @@ left:0;
 right:0;
 z-index: 1;
 top: calc(100% + 0.5rem);
-
+color:black;
 background-color: white;
 border-radius: 5px;
 

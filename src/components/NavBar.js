@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import { lightTheme as theme} from '../styles/colors';
+import { lightTheme as theme } from '../styles/colors';
 
 
 const NavBar = () => {
@@ -13,8 +13,8 @@ const NavBar = () => {
                 <Brand><i className="fas fa-cloud-sun" />{" "}WeatherApp</Brand>
             </NavLink>
             <div>
-                    <NavLink to='/' ><i className="fas fa-search-location"/></NavLink>
-                    <NavLink to='/favorites'> <i className="fas fa-star"/></NavLink>
+                <NavLink to='/' ><i className="fas fa-search-location" /></NavLink>
+                <NavLink to='/favorites'> <i className="fas fa-star" /></NavLink>
             </div>
         </Navigation>
     )
@@ -23,14 +23,12 @@ const NavBar = () => {
 export default NavBar;
 
 const Navigation = styled.nav`
-position:fixed;
-top:3rem;
-left:0;
-right:0;
+width:100%;
 padding: 1.5rem 3.5rem;
 background-color:transparent;
 color: ${theme.textColor};
-z-index:1;
+margin: 2.5rem 0;
+
 
 display:flex;
 align-items: center;
