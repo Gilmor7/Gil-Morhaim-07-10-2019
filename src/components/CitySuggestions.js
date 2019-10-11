@@ -13,6 +13,7 @@ const CitySuggestions = ({ cities }) => {
                     .map(city =>
                         <CitySuggest
                             key={city.Key}
+                            id={city.Key}
                             city={city.LocalizedName}
                             country={city.Country.LocalizedName} />
                     )
@@ -21,6 +22,8 @@ const CitySuggestions = ({ cities }) => {
         </Container>
     )
 }
+
+
 
 export default CitySuggestions;
 

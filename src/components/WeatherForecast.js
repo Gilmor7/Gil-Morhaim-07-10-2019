@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 
 import DailyWeather from './DailyWeather';
 
@@ -37,7 +38,11 @@ const WeatherForecast = () => {
     )
 }
 
-export default WeatherForecast;
+const mapStateToProps = state => ({
+
+})
+
+export default connect(mapStateToProps)(WeatherForecast);
 
 const Container = styled.div`
 align-self:center;

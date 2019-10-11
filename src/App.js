@@ -7,7 +7,6 @@ import WeatherPage from './pages/WeatherPage';
 import FavoritesPage from './pages/FavoritesPage';
 
 // Components imports
-import NavBar from './components/NavBar';
 import PageWrapper from './components/PageWrapper';
 
 function App() {

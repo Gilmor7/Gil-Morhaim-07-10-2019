@@ -1,19 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 
 import CitySuggestions from './CitySuggestions';
 import SearchComponent from './SearchComponent';
 
-const SearchForm = () => {
-
-    const [cityOptions, setCitiyOptions] = useState(null);
+const SearchForm = ({ citiesList, showSuggestions }) => {
 
     return (
         <Form>
-            <SearchComponent setOptions={setCitiyOptions} />
+            <SearchComponent />
             {
-                (cityOptions && cityOptions.length > 0) ?
-                    <CitySuggestions cities={cityOptions} />
+                (citiesList && showSuggestions) ?
+                    <CitySuggestions cities={citiesList} />
                     :
                     null
             }
@@ -21,7 +20,12 @@ const SearchForm = () => {
     )
 }
 
-export default SearchForm;
+const mapStateToProps = state => ({
+    citiesList: state.cities.citiesList,
+    showSuggestions: state.cities.isSuggestionShown
+})
+
+export default connect(mapStateToProps)(SearchForm);
 
 const Form = styled.form`
 position:relative;

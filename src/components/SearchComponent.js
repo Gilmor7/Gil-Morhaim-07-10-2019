@@ -1,22 +1,29 @@
 import React from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+
+import { setSuggestionsStatus } from '../redux/cities/cities.actions';
+import { fetchCitiesAsync } from '../redux/cities/cities.actions';
 
 //Styles imports
 import { lightTheme as theme } from '../styles/colors';
 
-//Util functions and services
-import { getCitiesOptions } from '../services/autoComplete';
 
 
-const SearchComponent = ({ setOptions }) => {
+const SearchComponent = ({ fetchCities, closeSuggestions, openSuggestions }) => {
 
-    const onChangeHandle = async (e, setOptions) => {
+    const onChangeHandle = async (e) => {
         const val = e.target.value;
+        if (val.length === 0) {
+            closeSuggestions();
+        }
 
-        if (val.length === 0) setOptions(null);
-        else if (val.length % 4 === 0) {
-            const options = await getCitiesOptions(val);
-            setOptions(options);
+        else if (val.length % 1 === 0) {
+            openSuggestions();
+        }
+
+        if (val.length % 4 === 0) {
+            fetchCities(val);
         }
 
     }
@@ -24,7 +31,7 @@ const SearchComponent = ({ setOptions }) => {
     return (
         <Search>
             <Input
-                onChange={e => onChangeHandle(e, setOptions)}
+                onChange={onChangeHandle}
                 type='text'
                 autoComplete='off'
                 name='search'
@@ -34,7 +41,13 @@ const SearchComponent = ({ setOptions }) => {
     )
 }
 
-export default SearchComponent;
+const mapDispatchToProps = dispatch => ({
+    fetchCities: str => dispatch(fetchCitiesAsync(str)),
+    openSuggestions: () => dispatch(setSuggestionsStatus(true)),
+    closeSuggestions: () => dispatch(setSuggestionsStatus(false))
+})
+
+export default connect(null, mapDispatchToProps)(SearchComponent);
 
 const Search = styled.div`
 display:flex;

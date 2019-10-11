@@ -1,16 +1,32 @@
 import React from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 
-const CitySuggest = ({ city, country }) => {
+import { setSuggestionsStatus } from '../redux/cities/cities.actions';
+import { fetchWeatherAsync } from '../redux/currentWeather/currentWeather.actions';
+
+const CitySuggest = ({ city, country, id, getCurrentCondition, closeSuggestions }) => {
     return (
-        <Row>
+        <Row
+            onClick={() => {
+                getCurrentCondition({
+                    id,
+                    cityName: city
+                });
+                closeSuggestions();
+            }}>
             <i className="fas fa-map-marked-alt" />
             <Info>{city},{' '}{country}</Info>
         </Row>
     )
 }
 
-export default CitySuggest;
+const mapDispatchToProps = dispatch => ({
+    getCurrentCondition: city => dispatch(fetchWeatherAsync(city)),
+    closeSuggestions: () => dispatch(setSuggestionsStatus(false))
+});
+
+export default connect(null, mapDispatchToProps)(CitySuggest);
 
 const Row = styled.div`
 height: 4rem;
