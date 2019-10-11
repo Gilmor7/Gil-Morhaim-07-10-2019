@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-// import styled from 'styled-components';
+import { connect } from 'react-redux';
+
+import { fetchWeatherAndForecast } from './redux/currentWeather/currentWeather.actions';
 
 // Pages imports
 import WeatherPage from './pages/WeatherPage';
@@ -9,12 +11,19 @@ import FavoritesPage from './pages/FavoritesPage';
 // Components imports
 import PageWrapper from './components/PageWrapper';
 
-function App() {
+const DEFAULT_CITY = {
+  id: '215854',
+  cityName: "Tel Aviv"
+}
 
-  // useEffect(() => {
+function App({ fetchDefaultCityData }) {
 
-  // }, [input])
-  console.log('app rendered')
+  useEffect(() => {
+    // fetching the default city data to display
+    // on weather page after application first loaded
+    // fetchDefaultCityData();
+  }, [])
+
 
   return (
     <Router>
@@ -26,7 +35,11 @@ function App() {
   );
 }
 
-export default App;
+const mapDispatchToProps = dispatch => ({
+  fetchDefaultCityData: () => dispatch(fetchWeatherAndForecast(DEFAULT_CITY))
+})
+
+export default connect(null, mapDispatchToProps)(App);
 
 
 

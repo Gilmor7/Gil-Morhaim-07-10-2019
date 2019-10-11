@@ -32,6 +32,8 @@ const SearchComponent = ({ fetchCities, closeSuggestions, openSuggestions }) => 
         <Search>
             <Input
                 onChange={onChangeHandle}
+                pattern="[A-Za-z]"
+                title="Only english letters are allowed"
                 type='text'
                 autoComplete='off'
                 name='search'

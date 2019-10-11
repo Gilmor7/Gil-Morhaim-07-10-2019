@@ -3,10 +3,13 @@ import styled from 'styled-components';
 import Moment from 'react-moment';
 import { connect } from 'react-redux';
 
-const CurrentCondition = ({ city, currentCityCondition }) => {
+const CurrentCondition = ({ city, currentCityCondition, fetchErr }) => {
 
     let content;
-    if (currentCityCondition) {
+    if (fetchErr) {
+        content = <div> Something went wrong... </div>;
+    }
+    else if (currentCityCondition) {
         const { Temperature, LocalObservationDateTime, WeatherText: status } = currentCityCondition[0];
 
         content = (
@@ -29,9 +32,8 @@ const CurrentCondition = ({ city, currentCityCondition }) => {
                 </TodayWeather>
             </React.Fragment>
         )
-    } else {
-        content = <div> wait... </div>
     }
+    else content = <div>Loading...</div>;
 
     return content;
 }
@@ -40,7 +42,7 @@ const CurrentCondition = ({ city, currentCityCondition }) => {
 const mapStateToProps = state => ({
     city: state.currentWeather.currentCity,
     currentCityCondition: state.currentWeather.currentCondition,
-    currentConditionErr: state.currentWeather.currentConditionErr
+    fetchErr: state.currentWeather.fetchErr
 
 })
 

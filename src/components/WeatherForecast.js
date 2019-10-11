@@ -4,19 +4,20 @@ import { connect } from 'react-redux';
 
 import DailyWeather from './DailyWeather';
 
-const WeatherForecast = ({ dailyForcasts }) => {
+const WeatherForecast = ({ dailyForcasts, fetchErr }) => {
 
     let content;
 
-    if (dailyForcasts) {
+    if (fetchErr) {
+        content = null;
+    }
+    else if (dailyForcasts) {
         content =
             dailyForcasts.map(item =>
                 <DailyWeather
                     key={item.EpochDate}
                     {...item} />
             )
-    } else {
-        content = <div>wait...</div>
     }
 
     return (
@@ -28,7 +29,7 @@ const WeatherForecast = ({ dailyForcasts }) => {
 
 const mapStateToProps = state => ({
     dailyForcasts: state.currentWeather.forecast,
-    forecastErr: state.currentWeather.forecastErr
+    fetchErr: state.currentWeather.fetchErr
 });
 
 export default connect(mapStateToProps)(WeatherForecast);
