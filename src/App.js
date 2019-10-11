@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 // import styled from 'styled-components';
 
@@ -10,8 +10,13 @@ import FavoritesPage from './pages/FavoritesPage';
 import PageWrapper from './components/PageWrapper';
 
 function App() {
-  return (
 
+  // useEffect(() => {
+
+  // }, [input])
+  console.log('app rendered')
+
+  return (
     <Router>
       <PageWrapper>
         <Route exact path='/' component={WeatherPage} />

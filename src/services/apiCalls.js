@@ -8,3 +8,7 @@ export const getCitiesOptions = str => {
 export const getCurrentWeather = cityKey => {
     return axios.get(`http://dataservice.accuweather.com/currentconditions/v1/${cityKey}?apikey=${apiKey}`);
 }
+
+export const getForecast = cityKey => {
+    return axios.get(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityKey}?apikey=${apiKey}&metric=true`);
+}

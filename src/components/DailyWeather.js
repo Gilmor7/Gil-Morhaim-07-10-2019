@@ -2,13 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import Moment from 'react-moment';
 
-const dailyWeather = ({ temp, date }) => {
+const dailyWeather = ({ Temperature, Date: date }) => {
     return (
         <Card>
             <Moment format='ddd'>
                 {date}
             </Moment>
-            <span>{temp}°C</span>
+            <span>{`${Temperature.Minimum.Value}°C - ${Temperature.Maximum.Value}°C`}</span>
         </Card>
     )
 }

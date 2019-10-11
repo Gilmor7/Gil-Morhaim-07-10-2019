@@ -3,13 +3,13 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 
 import { setSuggestionsStatus } from '../redux/cities/cities.actions';
-import { fetchWeatherAsync } from '../redux/currentWeather/currentWeather.actions';
+import { fetchWeatherAndForecast } from '../redux/currentWeather/currentWeather.actions';
 
-const CitySuggest = ({ city, country, id, getCurrentCondition, closeSuggestions }) => {
+const CitySuggest = ({ city, country, id, getLocationWeather, closeSuggestions }) => {
     return (
         <Row
             onClick={() => {
-                getCurrentCondition({
+                getLocationWeather({
                     id,
                     cityName: city
                 });
@@ -22,7 +22,7 @@ const CitySuggest = ({ city, country, id, getCurrentCondition, closeSuggestions 
 }
 
 const mapDispatchToProps = dispatch => ({
-    getCurrentCondition: city => dispatch(fetchWeatherAsync(city)),
+    getLocationWeather: city => dispatch(fetchWeatherAndForecast(city)),
     closeSuggestions: () => dispatch(setSuggestionsStatus(false))
 });
 

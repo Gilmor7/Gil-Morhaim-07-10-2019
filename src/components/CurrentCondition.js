@@ -3,10 +3,6 @@ import styled from 'styled-components';
 import Moment from 'react-moment';
 import { connect } from 'react-redux';
 
-
-// import { telAviv } from '../services/currentWeather';
-
-
 const CurrentCondition = ({ city, currentCityCondition }) => {
 
     let content;
@@ -43,7 +39,9 @@ const CurrentCondition = ({ city, currentCityCondition }) => {
 
 const mapStateToProps = state => ({
     city: state.currentWeather.currentCity,
-    currentCityCondition: state.currentWeather.currentCondition
+    currentCityCondition: state.currentWeather.currentCondition,
+    currentConditionErr: state.currentWeather.currentConditionErr
+
 })
 
 export default connect(mapStateToProps)(CurrentCondition);
