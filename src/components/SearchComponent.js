@@ -10,21 +10,27 @@ import { theme } from '../styles/colors';
 
 
 
-const SearchComponent = ({ fetchCities, closeSuggestions, openSuggestions }) => {
+const SearchComponent = ({ fetchCities, openSuggestions, setInputErr, closeSuggestions }) => {
 
     const onChangeHandle = async (e) => {
-        const val = e.target.value;
-        if (val.length === 0) {
-            closeSuggestions();
-        }
+        const input = e.target;
+        const regex = /[A-Za-z]/;
 
-        else if (val.length % 1 === 0) {
+        if (input.value.length > 0) {
             openSuggestions();
         }
+        else closeSuggestions();
 
-        if (val.length % 4 === 0) {
-            fetchCities(val);
+        if (!regex.test(input.value)) {
+            if (input.value.length !== 0) {
+                setInputErr('*Only english letters allowed');
+            }
+            else {
+                setInputErr(null);
+            }
+            return;
         }
+        fetchCities(input.value);
 
     }
 
@@ -32,8 +38,10 @@ const SearchComponent = ({ fetchCities, closeSuggestions, openSuggestions }) => 
         <Search>
             <Input
                 onChange={onChangeHandle}
-                pattern="[A-Za-z]"
-                title="Only english letters are allowed"
+                onFocus={openSuggestions}
+                onBlur={() => {
+                    setInputErr(null);
+                }}
                 type='text'
                 autoComplete='off'
                 name='search'
@@ -47,6 +55,7 @@ const mapDispatchToProps = dispatch => ({
     fetchCities: str => dispatch(fetchCitiesAsync(str)),
     openSuggestions: () => dispatch(setSuggestionsStatus(true)),
     closeSuggestions: () => dispatch(setSuggestionsStatus(false))
+
 })
 
 export default connect(null, mapDispatchToProps)(SearchComponent);

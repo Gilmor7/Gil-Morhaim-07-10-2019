@@ -37,7 +37,7 @@ export const fetchWeatherAndForecast = city => {
             dispatch(fetchWeatherSucces(responses[0].data))
             dispatch(fetchForecastSucces(responses[1].data.DailyForecasts))
         })
-            .catch(err => dispatch(setfetchErr('something went wrong')));
+            .catch(err => dispatch(setfetchErr(err)));
 
     }
 }

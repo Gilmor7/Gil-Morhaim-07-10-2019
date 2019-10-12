@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import CitySuggest from './CitySuggest';
 
 
-const CitySuggestions = ({ cities }) => {
+const CitySuggestions = ({ cities, formRef }) => {
     return (
         <Container>
             {
@@ -15,7 +15,8 @@ const CitySuggestions = ({ cities }) => {
                             key={city.Key}
                             id={city.Key}
                             city={city.LocalizedName}
-                            country={city.Country.LocalizedName} />
+                            country={city.Country.LocalizedName}
+                            formRef={formRef} />
                     )
             }
 

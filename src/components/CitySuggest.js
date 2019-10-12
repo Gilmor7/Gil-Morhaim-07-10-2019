@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { setSuggestionsStatus } from '../redux/cities/cities.actions';
 import { fetchWeatherAndForecast } from '../redux/currentWeather/currentWeather.actions';
 
-const CitySuggest = ({ city, country, id, getLocationWeather, closeSuggestions }) => {
+const CitySuggest = ({ city, country, id, getLocationWeather, closeSuggestions, formRef }) => {
     return (
         <Row
             onClick={() => {
@@ -13,6 +13,7 @@ const CitySuggest = ({ city, country, id, getLocationWeather, closeSuggestions }
                     id,
                     cityName: city
                 });
+                formRef.current.reset()
                 closeSuggestions();
             }}>
             <i className="fas fa-map-marked-alt" />
