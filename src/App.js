@@ -21,7 +21,7 @@ function App({ fetchDefaultCityData }) {
   useEffect(() => {
     // fetching the default city data to display
     // on weather page after application first loaded
-    // fetchDefaultCityData();
+    fetchDefaultCityData();
   }, [])
 
 
