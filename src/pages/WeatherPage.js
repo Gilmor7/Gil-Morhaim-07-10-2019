@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { lightTheme as theme } from '../styles/colors';
+import { theme } from '../styles/colors';
 
 import SearchForm from '../components/SearchForm';
 import WeatherDisplay from '../components/WeatherDisplay';

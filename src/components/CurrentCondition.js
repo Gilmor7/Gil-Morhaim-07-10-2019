@@ -3,20 +3,28 @@ import styled from 'styled-components';
 import Moment from 'react-moment';
 import { connect } from 'react-redux';
 
-const CurrentCondition = ({ city, currentCityCondition, fetchErr }) => {
+
+import FavoritesButton from './FavoritesButton';
+
+
+const CurrentCondition = ({ city, currentCityCondition, favorites, fetchErr }) => {
 
     let content;
     if (fetchErr) {
         content = <div> Something went wrong... </div>;
     }
     else if (currentCityCondition) {
+
         const { Temperature, LocalObservationDateTime, WeatherText: status } = currentCityCondition[0];
 
         content = (
             <React.Fragment>
                 <Header>
-                    <HeaderItem>{city.cityName}</HeaderItem>
-                    <HeaderItem><i className="fas fa-star" /></HeaderItem>
+                    <span>{city.cityName}</span>
+                    <FavoritesButton
+                        isFavorite={favorites.some(fav => fav.id === city.id)}
+                        city={city}
+                    />
                 </Header>
                 <TodayWeather>
                     <Temp>{Temperature.Metric.Value}°C </Temp>
@@ -42,9 +50,12 @@ const CurrentCondition = ({ city, currentCityCondition, fetchErr }) => {
 const mapStateToProps = state => ({
     city: state.currentWeather.currentCity,
     currentCityCondition: state.currentWeather.currentCondition,
-    fetchErr: state.currentWeather.fetchErr
+    fetchErr: state.currentWeather.fetchErr,
+    favorites: state.favorites.favesList
 
-})
+});
+
+
 
 export default connect(mapStateToProps)(CurrentCondition);
 
@@ -54,11 +65,9 @@ justify-content:space-between;
 align-items:center;
 width: 100%;
 margin-bottom: 3rem;
-`;
-
-const HeaderItem = styled.span`
 font-size: 1.8rem
 `;
+
 
 const TodayWeather = styled.div`
 display:flex;

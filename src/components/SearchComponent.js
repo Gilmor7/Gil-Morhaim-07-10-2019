@@ -6,7 +6,7 @@ import { setSuggestionsStatus } from '../redux/cities/cities.actions';
 import { fetchCitiesAsync } from '../redux/cities/cities.actions';
 
 //Styles imports
-import { lightTheme as theme } from '../styles/colors';
+import { theme } from '../styles/colors';
 
 
 

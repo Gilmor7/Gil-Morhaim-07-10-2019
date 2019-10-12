@@ -14,8 +14,6 @@ const WeatherDisplay = () => {
     )
 }
 
-
-
 export default WeatherDisplay;
 
 const Container = styled.div`
