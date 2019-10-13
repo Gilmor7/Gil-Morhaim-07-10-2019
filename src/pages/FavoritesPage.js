@@ -11,6 +11,7 @@ import FavoriteDisplay from '../components/FavoriteDisplay';
 
 const FavoritesPage = ({ favoritesList, favesWeather, getFavesWeather, fetchErr }) => {
 
+    // get the updated weather on favorites cities
     useEffect(() => {
         if (favoritesList.length > 0) {
             getFavesWeather(favoritesList);
@@ -61,7 +62,7 @@ color: ${theme.textColor};
 background-color: ${theme.backColor};
 width: 90vw;
 max-width: 85rem;
-min-height: 30rem;
+min-height: 70vh;
 margin-bottom: 2rem;
 text-align:center;
 overflow:auto;

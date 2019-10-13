@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import NavBar from './NavBar'
+import NavBar from './NavBar';
 
 const PageWrapper = ({ children }) => {
     return (

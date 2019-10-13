@@ -23,6 +23,7 @@ color: ${theme.textColor};
 background-color: ${theme.backColor};
 width: 90vw;
 max-width: 85rem;
+min-height: 70vh;
 display:flex;
 flex-direction: column;
 align-items:center;

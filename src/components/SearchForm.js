@@ -15,10 +15,15 @@ const SearchForm = ({ citiesList, showSuggestions, closeSuggestions, getLocation
 
 
     const on_submit = e => {
-        e.preventDefault()
+        e.preventDefault();
+
         if (!inputErr) {
             setInputErr(null);
             closeSuggestions();
+
+            // take the first city from the cities list in store 
+            // and create city object for sending to the getLocationWeather
+            // function as expected.
 
             const [cityInfo] = citiesList;
             if (cityInfo) {

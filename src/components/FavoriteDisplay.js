@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { withRouter } from 'react-router-dom';
-
 import { connect } from 'react-redux';
 
+// redux actions
 import { fetchWeatherAndForecast } from '../redux/currentWeather/currentWeather.actions';
 
 
@@ -41,6 +41,7 @@ display: flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
+margin: 1rem;
 `;
 
 const CardItem = styled.span`

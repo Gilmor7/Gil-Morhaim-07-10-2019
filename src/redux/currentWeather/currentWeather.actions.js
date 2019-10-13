@@ -29,6 +29,7 @@ export const fetchWeatherAndForecast = city => {
     return dispatch => {
         dispatch(setCurrentCity(city));
 
+        // fetch weather and forecast parallel
         Promise.all([
             getCurrentWeather(city.id),
             getForecast(city.id)

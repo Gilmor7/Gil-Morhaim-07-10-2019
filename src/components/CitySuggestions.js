@@ -3,13 +3,13 @@ import styled from 'styled-components';
 
 import CitySuggest from './CitySuggest';
 
-
+// auto suggestions component (on search)
 const CitySuggestions = ({ cities, formRef }) => {
     return (
         <Container>
             {
                 cities
-                    .filter((city, i) => i < 5)
+                    .filter((city, i) => i < 5) // display only 5 options
                     .map(city =>
                         <CitySuggest
                             key={city.Key}

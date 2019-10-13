@@ -32,6 +32,8 @@ export const fetchFavoritesWeatherAsync = favoritesList => {
         //run all the calls in parallel
         Promise.all(weatherCalls)
             .then(responses => {
+                // transform the responses to an array of weather objects 
+                // and save it to store
                 const weatherObjectsList = responses.map(res => res.data[0]);
                 dispatch(fetchFavoritesWeatherSuccess(weatherObjectsList));
             })

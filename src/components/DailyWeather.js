@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Moment from 'react-moment';
 
+
 const dailyWeather = ({ Temperature, Date: date }) => {
     return (
         <Card>

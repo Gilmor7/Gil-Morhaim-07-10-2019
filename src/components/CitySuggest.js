@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
+// redux actions 
 import { setSuggestionsStatus } from '../redux/cities/cities.actions';
 import { fetchWeatherAndForecast } from '../redux/currentWeather/currentWeather.actions';
 
