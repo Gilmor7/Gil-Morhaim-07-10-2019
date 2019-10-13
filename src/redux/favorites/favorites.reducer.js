@@ -18,7 +18,7 @@ const favoritesReducer = (state = initialState, action) => {
             return {
                 ...state,
                 favesList: state.favesList
-                    .filter(fav => fav !== action.payload)
+                    .filter(fav => fav.id !== action.payload.id)
             }
         case actionTypes.FETCH_FAVORITES_WEATHER_SUCCESS:
             return {

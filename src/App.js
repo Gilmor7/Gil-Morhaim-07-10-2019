@@ -23,7 +23,7 @@ function App({ fetchDefaultCityData }) {
   useEffect(() => {
     // fetching the default city data to display
     // on weather page after application first loaded
-    // fetchDefaultCityData();
+    fetchDefaultCityData(DEFAULT_CITY);
   }, [])
 
 
@@ -38,7 +38,7 @@ function App({ fetchDefaultCityData }) {
 }
 
 const mapDispatchToProps = dispatch => ({
-  fetchDefaultCityData: () => dispatch(fetchWeatherAndForecast(DEFAULT_CITY))
+  fetchDefaultCityData: defaultCity => dispatch(fetchWeatherAndForecast(defaultCity))
 })
 
 export default connect(null, mapDispatchToProps)(App);

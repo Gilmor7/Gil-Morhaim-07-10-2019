@@ -30,7 +30,7 @@ const FavoritesPage = ({ favoritesList, favesWeather, getFavesWeather, fetchErr 
         content = favesWeather.map((fav, idx) =>
             <FavoriteDisplay
                 city={favoritesList[idx]}
-                key={fav.EpochTime}
+                key={favoritesList[idx].Key}
                 {...fav} />)
     }
     else content = <Message>Loading...</Message>
